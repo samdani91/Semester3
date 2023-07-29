@@ -14,12 +14,17 @@ int main(int argc,char *argv[])
     scanf("%d",&capacity);
     float weight[item],benefit[item],valuePerUnit[item];
 
+    FILE *fp;
+    fp=fopen("knapsackinput.txt","r");
+
     printf("Enter weights and benefits:\n");
     for(int i=0;i<item;i++){
         //printf("Item %d:\n",i+1);
         //printf("Enter weight and price:");
-        scanf("%f %f",&weight[i],&benefit[i]);
+        fscanf(fp,"%f %f",&weight[i],&benefit[i]);
     }
+    fclose(fp);
+
     for(int i=0;i<item;i++){
         valuePerUnit[i]=benefit[i]/weight[i];
     }
