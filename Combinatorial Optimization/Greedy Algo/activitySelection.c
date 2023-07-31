@@ -13,7 +13,7 @@ int main(int argc,char *argv[])
     int act[n],start[n],finish[n];
 
     FILE *fp;
-    fp=fopen("actSelection.txt","r");
+    fp=fopen("activitySelection.txt","r");
 
     //printf("Enter start and finish time:\n");
     for(int i=0;i<n;i++){
