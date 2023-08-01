@@ -5,12 +5,12 @@
 #define f(X) ((X*X*X)+4*X*X-10.0)
 #define EPS 1.0e-6
 
-double root(int n,double a,double b,double c);
+double root(int n,double a,double b);
 
 int main()
 {
 	
-	double a,b,c;
+	double a,b;
 	int i,n;
 	a=1.25,b=1.5;
 	n=100;
@@ -20,13 +20,14 @@ int main()
 		exit(0);
 	}
 	
-	printf("Root(BS):%lf\n",root(n,a,b,c));
+	printf("Root(BS):%lf\n",root(n,a,b));
 	
 	return 0;
 }
 
-double root(int n,double a,double b,double c){
+double root(int n,double a,double b){
 	int i;
+	double c;
 	for(i=1;i<n;i++){
 		c=(a+b)/2;
 		printf("%3d %.6lf %.6lf %.6lf %.6lf %.6lf %.6lf\n",i,a,b,c,f(a),f(b),f(c));
@@ -36,10 +37,6 @@ double root(int n,double a,double b,double c){
 		}
 	
 		if(f(a)*f(c)<0) b=c;
-		else a=c;
-			
+		else a=c;		
 	}
-	
-	
-
 }
