@@ -1,6 +1,7 @@
 #include<stdio.h>
 
 int rodCut(int *price,int len);
+int max(int a, int b);
 
 int dp[1005];
 
@@ -29,11 +30,11 @@ int rodCut(int *price,int len){
     int temp;
     for(int i=1;i<=len;i++){
         if(len-i>=0){
-            temp=rodCut(price,len-i)+price[i-1];
-            if(temp>benefit){
-                benefit=temp;
-            }
+            benefit = max(benefit, price[i-1] + rodCut(price, len - i));
         }
     }
     return dp[len]=benefit;
+}
+int max(int a, int b) {
+    return (a > b) ? a : b;
 }
