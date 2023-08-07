@@ -3,7 +3,7 @@
 int rodCut(int *price, int len);
 int max(int a, int b);
 
-int dp[55],priceLen,cut[1005];
+int dp[55],priceLen,cut[100];
 
 int main(int argc, char *argv[])
 {
@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 
     int ans = rodCut(price, len);
     printf("Maximum profit: %d\n", ans);
+    printf("Cutting lengths:\n");
     while(len>0){
         printf("%d ",cut[len]);
         len=len-cut[len];
