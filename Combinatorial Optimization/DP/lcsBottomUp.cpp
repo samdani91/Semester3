@@ -1,8 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-int lcs(string &s1,string &s2,int n,int m);
 void print_lcs(vector<vector<int>>dp,string &s1,string &s2,int n,int m);
 
 int main()
