@@ -38,9 +38,8 @@ int main()
                 dp[i][w] = dp[i - 1][w];
             }
         }
-        // cout<<dp[item][w];
     }
-    // print(item,knapsack,weight);
+    cout<<"Max profit:"<<dp[item][knapsack]<<endl;
     i = item;
     int j = knapsack;
     while (i > 0 && j > 0)
@@ -48,8 +47,6 @@ int main()
         if (dp[i][j] == dp[i - 1][j])
         {
             i--;
-            //cout<<i<<j<<endl;
-            
         }
         else
         {   
