@@ -8,27 +8,25 @@ int main(int argc,char *argv[])
 
     int capacity,item;
 
-    printf("Enter number of items:");
+    freopen("knapsackinput.txt","r",stdin);
+
+    //printf("Enter number of items:");
     scanf("%d",&item);
-    printf("Enter capacity of knapsack:");
+    //printf("Enter capacity of knapsack:");
     scanf("%d",&capacity);
     float weight[item],benefit[item],valuePerUnit[item];
 
-    FILE *fp;
-    fp=fopen("knapsackinput.txt","r");
+    
 
-    printf("Enter weights and benefits:\n");
+    //printf("Enter weights and benefits:\n");
     for(int i=0;i<item;i++){
-        //printf("Item %d:\n",i+1);
-        //printf("Enter weight and price:");
-        fscanf(fp,"%f %f",&weight[i],&benefit[i]);
+        scanf("%f %f",&weight[i],&benefit[i]);
     }
-    fclose(fp);
 
     for(int i=0;i<item;i++){
         valuePerUnit[i]=benefit[i]/weight[i];
     }
-
+    printf("\n");
     sort(weight,benefit,valuePerUnit,item);
     knapsack(weight,benefit,valuePerUnit,item,capacity);
 
