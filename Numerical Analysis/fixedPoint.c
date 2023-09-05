@@ -16,7 +16,6 @@ int main()
 	a=1.25;
 	n=100;
 	
-	
 	printf("Root(FP):%lf\n",root(n,a));
 	
 	return 0;
