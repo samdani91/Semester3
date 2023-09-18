@@ -1,75 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+#define NMAX 3
+#define EPS 0.1
 
-#define EPS 0.1e5
-#define row1 4
-#define col1 4
+int main (void) {
+  int i, j, k;
+  double x[NMAX][NMAX+1]= { {4,-1,1,8}, {2,5,2,3}, {1,2,4,11}};
+  double mij,temp;
 
-double augmentedMatrix[row1][col1 + 1];
+  for (i=0; i<NMAX; i++ ){
+    for (j=0; j<NMAX+1; j++ )
+      printf("%7.2lf "  ,x[i][j]);
+    printf("\n");
+  }
+  printf("\n");
 
-//(int *)arr
-
-int main()
-{
-    freopen("gaussinput.txt", "r", stdin);
-    int i, j, k;
-    double temp;
-
-    for (i = 0; i < row1; i++)
-    {
-        for (j = 0; j < col1 + 1; j++)
-        {
-            scanf("%lf", &augmentedMatrix[i][j]);
+  for (i=0; i<NMAX-1; i++ ) { 
+    if (fabs(x[i][i]) < EPS) {
+      for (j=i+1; j<NMAX; j++ ){
+        if (fabs(x[j][i]) > EPS) {
+          for (k=i; k<NMAX+1; k++ )
+          {
+            temp = x[i][k];
+            x[i][k] = x[j][k];
+            x[j][k] = temp;
+          } 
+          break;   
         }
+      }
     }
+    for (j=i+1; j<NMAX; j++ ){
+      mij = x[j][i]/x[i][i];
+      for (k=i; k<NMAX+1; k++ )
+      {
+        x[j][k] = x[j][k] - mij * x[i][k];
+      }
+    }
+  }
 
-    printf("\nAugmented Matrix:\n");
-    for (i = 0; i < row1; i++)
-    {
-        for (j = 0; j < col1 + 1; j++)
-        {
-            printf("%.2lf\t", augmentedMatrix[i][j]);
-        }
-        printf("\n");
-    }
+  for (i=0; i<NMAX; i++ ){
+    for (j=0; j<NMAX+1; j++ )
+      printf("%7.2lf "  ,x[i][j]);
+    printf("\n");
+  }
+  printf("\n");
 
-    for (i = 0; i < row1-1; i++)
-    {
-        if (fabs(augmentedMatrix[i][i]) < EPS)
-        {
-            for (j = i+1; j < row1; j++)
-            {
-                if (fabs(augmentedMatrix[j][i]) > EPS)
-                {
-                    for (k = i; k < row1 + 1; k++)
-                    {
-                        temp = augmentedMatrix[i][k];
-                        augmentedMatrix[i][k] = augmentedMatrix[j][k];
-                        augmentedMatrix[j][k] = temp;
-                    }
-                    break;
-                }
-            }
-        }
-    }
-    for (j = i+1; j < row1; j++)
-    {
-        if (j > i)
-        {
-            double ratio = augmentedMatrix[j][i] / augmentedMatrix[i][i];
-            for (k = 0; k < col1 + 1; k++)
-            {
-                augmentedMatrix[j][k] -= (augmentedMatrix[i][k] * ratio);
-            }
-        }
-    }
-    printf("\nUpper Triangular Matrix:\n");
-    for (i = 0; i < row1; i++)
-    {
-        for (j = 0; j < col1 + 1; j++)
-        {
-            printf("%.2lf\t", augmentedMatrix[i][j]);
-        }
-        printf("\n");
-    }
+  return 0;
 }
