@@ -11,7 +11,7 @@ void read()
 {
     string s;
     int w, x, y, i = 0;
-    freopen("inputG.txt", "r", stdin);
+    freopen("dijkstrainput.txt", "r", stdin);
     while (cin >> s)
     {
         if (s == "END")
