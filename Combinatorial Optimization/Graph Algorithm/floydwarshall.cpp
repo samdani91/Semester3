@@ -29,12 +29,12 @@ int main()
 
     floyd_warshall();
 
-    cout<<"Floyd Warshall APSP: "<<endl<<endl;
+    cout<<"\t\t\t\tFloyd Warshall APSP"<<endl<<endl;
     //cout<<"Source:";
     cin>>source;
     //cout<<"Destination:";
     cin>>dest;
-
+    cout << "The shortest path from " << source << " to " << dest << " : ";
     printPath(names[source],names[dest]);
 
     for(auto vertices:names){
