@@ -70,7 +70,7 @@ void LU()
 {
     for(int i=0;i<MAX;i++){
 		for(int j=0;j<MAX;j++){
-			for(int k=0;k<MAX;k++){
+			for(int k=0;k<MAX;k++){ 
 				product[i][j]+=L[i][k]*U[k][j];
 			
 			}
