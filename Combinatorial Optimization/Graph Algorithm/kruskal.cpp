@@ -5,38 +5,35 @@ const int N=1e5+10;
 
 int parent[N];
 
-void make(int v){
-    parent[v]=v;
-}
+void make(int v);
+int find(int v);
+void Union(int a,int b);
 
-int find(int v){
-    if(v==parent[v]) return v;
-    return find(parent[v]);
-}
-void Union(int a,int b){
-    a=find(a);
-    b=find(b);
-    if(a!=b){
-        parent[b]=a;
-    }
-}
 
 int main()
-{
+{   
+    freopen("kruskalinput.txt","r",stdin);
+
     int n,e;
     cin>>n>>e;
 
     vector<pair<int,pair<int,int>>>edges; //{w,{u,v}}
+    map<char,int>mp;
 
     while(e--){
-        int u,v,w;
+        char u,v;
+        int w;
         cin>>u>>v>>w;
-        edges.push_back({w,{u,v}});
+        if(mp[u]==0)mp[u]=u-96;
+        if(mp[v]==0) mp[v]=v-96;
+        edges.push_back({w,{mp[u],mp[v]}});
     }
     
     sort(edges.begin(),edges.end());
 
-    for(int i=1;i<=n;i++) make(i);
+    for(auto it:mp){
+        make(it.second);
+    }
 
     int totalCost=0;
     for(auto &edge:edges){
@@ -47,16 +44,23 @@ int main()
         if(find(u)==find(v)) continue;
         Union(u,v);
         totalCost+=w;
-        cout<<u<<" "<<v<<endl;
+        cout<<char(u+96)<<" "<<char(v+96)<<endl;
     }
     cout<<totalCost<<endl;
 }
-// a-1
-// b-2
-// c-3
-// d-4
-// e-5
-// f-6
-// g-7
-// h-8
-// i-9
+void make(int v){
+    parent[v]=v;
+}
+
+int find(int v){
+    if(v==parent[v]) return v;
+    return find(parent[v]);
+}
+
+void Union(int a,int b){
+    a=find(a);
+    b=find(b);
+    if(a!=b){
+        parent[b]=a;
+    }
+}
