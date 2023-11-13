@@ -5,7 +5,7 @@ int main()
 {
     int i,j,k;
     int state,symbol;
-   // freopen("input.txt","r",stdin);
+   freopen("input.txt","r",stdin);
 
     cout<<"Enter number of state:\n";
     cin>>state;
@@ -49,7 +49,7 @@ int main()
 
     for(i=0; i<state; i++)
     {
-        for(j=i; j<state; j++)
+        for(j=0; j<state; j++)
         {
             int check=0;
             for(k=0; k<symbol; k++)
@@ -70,7 +70,7 @@ int main()
     {
         for(i=1; i<=state; i++)
         {
-            for(j=i; j<=state; j++)
+            for(j=1; j<=state; j++)
             {
                 re[k][i][j]=re[k-1][i][j]+"+"+re[k-1][i][k]+"("+re[k-1][k][k]+")*"+re[k-1][k][j];
 
@@ -85,7 +85,7 @@ int main()
     {
         for(i=1; i<=state; i++)
         {
-            for(j=i; j<=state; j++)
+            for(j=1; j<=state; j++)
             {
                 cout<<"R"<<i<<j<<"("<<k<<"): "<<re[k][i][j]<<endl<<endl;
             }
