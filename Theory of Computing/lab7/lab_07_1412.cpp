@@ -307,9 +307,9 @@ int main()
     cout<<"New Transition Table:"<<endl;
     for(i=1; i<=state; i++){
         for(j=0; j<symbol; j++){
-           if(newTransTable[i][j]!=0) cout<<newTransTable[i][j]<<" ";
+            if(newTransTable[i][j]!=0) cout<<newTransTable[i][j]<<" ";
         }
-        if(newTransTable[i][j]!=0)cout<<endl;
+        if(newTransTable[i][j]!=0) cout<<endl;
     }
 
     cout<<endl;

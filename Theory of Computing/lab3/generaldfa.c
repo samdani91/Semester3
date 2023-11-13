@@ -29,6 +29,7 @@ int main()
         for(int j=0;j<alpha;j++){
             printf("If %c then:",set_alphabet[j]);
             scanf(" %c",&matrix[i][j]);
+            
         }
 
     }
