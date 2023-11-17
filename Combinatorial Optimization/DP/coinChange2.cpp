@@ -49,8 +49,14 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);cout.tie(NULL);
 
-    vector<int>coins={1,2,5};
-    cout<<change(11,coins);
+    int n,amount;
+    cin>>n>>amount;
+    vector<int>coins;
+    loop{
+        int x;cin>>x;
+        coins.push_back(x);
+    }
+    cout<<change(amount,coins);
 
     
 
